@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لعبة فرازير</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-wrap">
+    <!-- القائمة الرئيسية -->
+    <div id="main-menu" class="screen">
+      <h1>لعبة فرازير</h1>
+      <p class="lead">من صناعة الطلاب: أحمد ياسر، أوس علي، أيمن محمد — إعدادية الشرقية - الموصل</p>
+
+      <div class="menu-buttons">
+        <button id="btn-start-single" class="btn-primary">ابدأ اللعبة فردي</button>
+        <button id="btn-start-multi" class="btn-primary">ابدأ اللعبة جماعي</button>
+      </div>
+    </div>
+
+    <!-- إعدادات الفردي -->
+    <div id="single-settings" class="screen hidden">
+      <h2>إعدادات الفردي</h2>
+      <label>عدد الأسئلة (1 - 300):</label>
+      <input type="number" id="single-question-count" placeholder="مثلاً 10" min="1" max="300" />
+      <label>الوقت لكل سؤال (بالثواني، 0 = لا نهائي):</label>
+      <input type="number" id="single-time-limit" placeholder="مثلاً 20" min="0" />
+      <div class="menu-buttons">
+        <button id="single-start" class="btn-primary">ابدأ</button>
+        <button id="single-back" class="secondary">الرجوع</button>
+      </div>
+    </div>
+
+    <!-- إعدادات الجماعي -->
+    <div id="players-count-screen" class="screen hidden">
+      <h2>إعدادات الجماعي</h2>
+      <label>عدد الأفراد:</label>
+      <input type="number" id="players-count" placeholder="مثلاً 3" min="2" />
+      <label>عدد الأسئلة لكل اللعبة (1 - 300):</label>
+      <input type="number" id="multi-question-count" placeholder="مثلاً 15" min="1" max="300" />
+      <label>الوقت لكل سؤال (بالثواني، 0 = لا نهائي):</label>
+      <input type="number" id="multi-time-per-question" placeholder="مثلاً 20" min="0" />
+      <div class="menu-buttons">
+        <button id="players-next" class="btn-primary">التالي</button>
+        <button id="players-back" class="secondary">الرجوع</button>
+      </div>
+    </div>
+
+    <!-- إدخال أسماء اللاعبين -->
+    <div id="players-names-screen" class="screen hidden">
+      <h2>أدخل أسماء اللاعبين</h2>
+      <div id="players-inputs" class="inputs-list"></div>
+      <div class="menu-buttons">
+        <button id="multi-start" class="btn-primary">ابدأ اللعبة الجماعية</button>
+        <button id="names-back" class="secondary">الرجوع</button>
+      </div>
+    </div>
+
+    <!-- شاشة اللعبة -->
+    <div id="quiz" class="screen hidden">
+      <div class="top-row">
+        <div id="current-player" class="current-player"></div>
+        <div id="timer" class="timer hidden">⏱ <span id="time">--</span></div>
+      </div>
+
+      <h2 id="question">السؤال سيظهر هنا</h2>
+      <div id="options" class="options"></div>
+
+      <div class="bottom-row">
+        <div id="score" class="score">النتيجة: 0</div>
+        <div class="menu-buttons small">
+          <button id="end-game" class="secondary">إنهاء اللعبة</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- شاشة النتائج -->
+    <div id="result-screen" class="screen hidden">
+      <h2 id="result-title">لوحة النتائج 🏆</h2>
+      <div id="final-results" class="final-results"></div>
+      <div class="menu-buttons">
+        <button id="back-to-menu" class="btn-primary">الرجوع إلى القائمة الرئيسية</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- أصوات اختيارية -->
+  <audio id="sound-correct" preload="auto">
+    <source src="assets/correct.mp3" type="audio/mpeg" />
+    <source src="assets/correct.ogg" type="audio/ogg" />
+  </audio>
+  <audio id="sound-wrong" preload="auto">
+    <source src="assets/wrong.mp3" type="audio/mpeg" />
+    <source src="assets/wrong.ogg" type="audio/ogg" />
+  </audio>
+  <audio id="sound-winner" preload="auto">
+    <source src="assets/winner.mp3" type="audio/mpeg" />
+    <source src="assets/winner.ogg" type="audio/ogg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
